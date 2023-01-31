@@ -1,10 +1,11 @@
 package cli 
 
 import (
+	"fmt"
 	"github.com/r31sr4r/go-ports-and-adapters/application"	
 )
 
-func Run(service application.ProductServiceInterface, action string, productId string, productName string, price float64) (string, err) {
+func Run(service application.ProductServiceInterface, action string, productId string, productName string, price float64) (string, error) {
 
 	var result = ""
 
@@ -18,8 +19,7 @@ func Run(service application.ProductServiceInterface, action string, productId s
 				product.GetID(), 
 				product.GetName(), 
 				product.GetPrice(), 
-				product.GetStatus()
-			)
+				product.GetStatus())
 		case "enable":
 			product, err := service.Get(productId)
 			if err != nil {
@@ -51,8 +51,7 @@ func Run(service application.ProductServiceInterface, action string, productId s
 				res.GetID(), 
 				res.GetName(),
 				res.GetPrice(),
-				res.GetStatus()
-			)
+				res.GetStatus())
 	}
 
 	return result, nil
